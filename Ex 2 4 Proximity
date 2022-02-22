@@ -1,0 +1,32 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <math.h>
+
+int main()
+{
+	freopen("input.txt", "r", stdin);
+	freopen("output.txt", "w", stdout);
+
+	int n, nearer = 1;
+	double a, vers, proximity = 1.0;
+
+	scanf("%d", &n);
+	for (int i = 1; i != n + 1; ++i)
+	{
+		scanf("%lf", &a);
+		vers = a - (int)a;
+		if (fabs(vers) < proximity)
+		{
+			proximity = fabs(vers);
+			nearer = i;
+		}
+		if (fabs(1 - vers) < proximity)
+		{
+			proximity = fabs(1 - vers);
+			nearer = i;
+		}
+	}
+	printf("%d", nearer);
+	fclose(stdin);
+	fclose(stdout);
+}
